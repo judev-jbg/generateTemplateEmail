@@ -139,7 +139,6 @@ async function generateTemplate({
       `${addressAddition_.address1[0]}, ${addressAddition_.address2[0]},<br>${addressAddition_.postcode[0]}, ${addressAddition_.city[0]}`
     );
   } else {
-    console.log("ad 2 vacio");
     htmlContent = htmlContent.replace(
       "{{address}}",
       `${addressAddition_.address1[0]},<br>${addressAddition_.postcode[0]}, ${addressAddition_.city[0]}`
