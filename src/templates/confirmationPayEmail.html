@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirmación de pago - {{reference}}</title>
+  </head>
+  <body>
+    <style type="text/css">
+      .x_main .x_header {
+        background-color: #fff3da;
+        border-radius: 0 0 120px 0;
+        max-width: 1200px;
+      }
+      .x_main .x_header__container {
+        background: url(https://www.toolstock.info/img/pay.png) no-repeat bottom
+          right;
+        background-size: 250px;
+        border-radius: 0 0 120px 0;
+        object-fit: contain;
+      }
+      @media (prefers-color-scheme: dark) {
+        .x_main .x_header {
+          background-color: #33270e !important;
+          color: white !important;
+        }
+        .x_main .x_header__container {
+          background: url(https://www.toolstock.info/img/pay-dark.png) no-repeat
+            bottom right !important;
+          background-size: 256px !important;
+        }
+      }
+
+      .x_main {
+        padding: 0;
+        margin: 0;
+        font-family: Verdana, sans-serif !important;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 1.4;
+      }
+      .x_main table {
+        width: 100%;
+      }
+      .x_main td {
+        font-family: Verdana, sans-serif !important;
+      }
+      .x_main td a {
+        color: #2abb9b;
+        text-decoration: none;
+      }
+      .x_main .x_header__title {
+        font-size: 2.25em;
+        font-weight: bold;
+        padding: 24px 0;
+        letter-spacing: -1px;
+      }
+      .x_main .x_header__subtitle {
+        padding-right: 150px;
+      }
+
+      .x_main .x_header__inner-container {
+        padding: 40px 16px;
+      }
+      .x_main .x_header__margin-bottom {
+        font-size: 0;
+        height: 0;
+        padding-top: 40px;
+      }
+      .x_main .x_body__details {
+        padding: 12px;
+      }
+      .x_main .x_body__background {
+        background-color: #f5f5f5;
+      }
+      .x_main .x_body__courier-margin-top {
+        font-size: 0;
+        height: 0;
+      }
+      .x_main .x_body__courier-padding-top {
+        font-size: 0;
+        height: 0;
+        padding-top: 12px;
+      }
+      .x_main .x_advertisement {
+        background-color: #ffe7b4;
+        max-width: 600px;
+        border-radius: 8px;
+        padding: 12px;
+      }
+      .x_main .x_advertisement__margin-top {
+        font-size: 0;
+        height: 0;
+        padding-top: 30px;
+      }
+      .x_main .x_table__padded td {
+        padding: 12px;
+      }
+      .x_main .x_table__padded td td {
+        padding: 0;
+      }
+      .x_main .x_indent {
+        background-color: white;
+      }
+
+      .x_main .x_highlight {
+        color: #dadada;
+        background-color: #eeeeee;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 1em;
+        font-weight: 500;
+      }
+
+      .x_main .x_company-info {
+        color: #4a4a4a;
+      }
+      .x_main .x_label {
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+      .x_main .x_label-details {
+        color: #6e6e6e !important;
+        text-decoration: none !important;
+      }
+      .x_main .x_table__padded td.x_product {
+        padding: 12px 0;
+      }
+
+      .x_main .x_dark-mode {
+        display: none;
+      }
+
+      .x_main .x_dark-mode {
+        display: none;
+      }
+      .x_main .x_light-mode {
+        padding: 0 1px !important;
+        border-radius: 5px;
+      }
+      @media (prefers-color-scheme: light) {
+        .x_main .x_dark-mode {
+          display: none;
+          width: 0;
+          height: 0;
+          visibility: hidden;
+          overflow: hidden;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        .x_main .x_dark-mode {
+          display: initial !important;
+        }
+        .x_main {
+          color: #eaeaea !important;
+          background-color: black !important;
+        }
+        .x_main .x_light-mode {
+          display: none !important;
+          width: 0;
+          height: 0;
+          visibility: hidden;
+          overflow: hidden;
+        }
+        .x_main .x_body__background {
+          background-color: #292929 !important;
+          color: white !important;
+        }
+        .x_main .x_indent {
+          background-color: black !important;
+        }
+        .x_main .x_highlight {
+          background-color: #3d3d40 !important;
+          color: #c9c9c9 !important;
+        }
+        .x_main .x_advertisement {
+          background-color: #3d2f11 !important;
+        }
+
+        .x_main .x_company-info {
+          color: white !important;
+        }
+        .x_main td.x_label {
+          color: inherit !important;
+          text-decoration: none !important;
+        }
+        .x_main .x_label-details {
+          color: #9b9b9b !important;
+          text-decoration: none !important;
+        }
+      }
+      @media (max-width: 600px) {
+        .x_main .x_body {
+          font-size: 0.9em;
+        }
+        .x_main .x_header__container {
+          background-size: 180px !important;
+        }
+        .x_main .x_header__inner-container {
+          padding: 40px 16px;
+        }
+        .x_main .x_header__margin-bottom {
+          font-size: 0;
+          height: 0;
+          padding-top: 24px;
+        }
+        .x_main .x_header__title {
+          font-size: 1.5em;
+        }
+        .x_main .x_header__subtitle {
+          padding-right: 140px;
+        }
+        .x_main .x_body {
+          border: 0 solid white;
+          padding: 0;
+        }
+        .x_main .x_body__details {
+          border: none;
+        }
+        .x_main .x_body__delivery-details {
+          border: 0 solid #f5f5f5;
+        }
+        .x_main .x_body__courier-margin-top {
+          height: 0;
+          font-size: 0;
+        }
+        .x_main .x_body__courier-padding-top {
+          font-size: 0;
+          height: 0;
+          padding-top: 0;
+        }
+        .x_main .x_advertisement {
+          border: none;
+        }
+        .x_main .x_advertisement__margin-top {
+          font-size: 0;
+          height: 0;
+          padding-top: 30px;
+        }
+      }
+    </style>
+
+    <div class="x_main">
+      <table
+        style="max-width: 100%"
+        border="0"
+        cellspacing="0"
+        cellpadding="0"
+        width="100%"
+        role="presentation"
+      >
+        <thead>
+          <tr>
+            <td align="center">
+              <table
+                style="max-width: 1200px"
+                border="0"
+                cellspacing="0"
+                cellpadding="0"
+                width="100%"
+                role="presentation"
+              >
+                <tbody>
+                  <tr>
+                    <td class="x_header">
+                      <table
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        role="presentation"
+                      >
+                        <tbody>
+                          <tr>
+                            <td
+                              class="x_header__container"
+                              align="center"
+                              data-imagetype="External"
+                            >
+                              <table
+                                style="max-width: 600px"
+                                border="0"
+                                cellspacing="0"
+                                cellpadding="0"
+                                width="100%"
+                                role="presentation"
+                                class="x_header__inner-container"
+                              >
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <img
+                                        class="x_light-mode"
+                                        style="
+                                          width: 150px;
+                                          background-image: none !important;
+                                        "
+                                        width="150"
+                                        alt="logo"
+                                        src="https://www.toolstock.info/img/logo.png"
+                                        data-imagetype="External"
+                                      />
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <img
+                                        class="x_dark-mode"
+                                        style="
+                                          width: 150px;
+                                          background-image: none !important;
+                                        "
+                                        width="150"
+                                        alt="logo"
+                                        src="https://www.toolstock.info/img/logo-dark.png"
+                                        data-imagetype="External"
+                                      />
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="x_header__title">
+                                      Pedido confirmado
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="x_header__subtitle">
+                                      Hola {{firstname}}, hemos recibido tu pago
+                                      y queremos confirmarte que hemos comenzado
+                                      a preparar tu pedido.
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="x_header__margin-bottom"></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="x_body" align="center">
+              <table
+                style="max-width: 600px"
+                border="0"
+                cellspacing="0"
+                cellpadding="0"
+                width="100%"
+                role="presentation"
+              >
+                <tbody>
+                  <tr>
+                    <td
+                      style="border-radius: 16px 16px 0 0; padding-bottom: 0"
+                      class="x_body__details x_body__background"
+                    >
+                      <table
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        role="presentation"
+                        class="x_table__padded"
+                      >
+                        <tbody>
+                          <tr>
+                            <td><strong>Productos</strong></td>
+                            <td
+                              style="
+                                white-space: nowrap;
+                                vertical-align: top;
+                                text-align: end;
+                                padding: 40px 12px;
+                              "
+                            >
+                              <strong
+                                ><span
+                                  class="x_highlight"
+                                  data-ogsb=""
+                                  style="
+                                    background-color: rgb(
+                                      79,
+                                      79,
+                                      83
+                                    ) !important;
+                                  "
+                                  >Pedido {{reference}}</span
+                                ></strong
+                              >
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <table
+                        align="left"
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        role="presentation"
+                        class="x_table__padded"
+                      >
+                        <tbody>
+                          <!-- <tr style="vertical-align: top">
+                            <td><strong>{{product.quantity}}x</strong></td>
+                            <td class="x_product">
+                              <table
+                                border="0"
+                                cellspacing="0"
+                                cellpadding="0"
+                                width="100%"
+                                role="presentation"
+                              >
+                                <tbody>
+                                  <tr>
+                                    <td>{{product.name}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td style="white-space: nowrap" align="right">
+                              <table
+                                border="0"
+                                cellspacing="0"
+                                cellpadding="0"
+                                width="100%"
+                                role="presentation"
+                              >
+                                <tbody>
+                                  <tr>
+                                    <td
+                                      style="white-space: nowrap"
+                                      align="right"
+                                    >
+                                      {{product.price}} €
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr> -->
+                          {{products_table_content}}
+                        </tbody>
+                      </table>
+
+                      <table
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        border="0"
+                      >
+                        <tbody>
+                          <tr>
+                            <td
+                              style="padding-top: 12px; height: 0; font-size: 0"
+                            ></td>
+                          </tr>
+                          <tr>
+                            <td style="width: 12px"></td>
+                            <td
+                              style="
+                                background: none;
+                                border-top: 2px dashed #d8d8d8;
+                                font-size: 0;
+                              "
+                            >
+                              &nbsp;
+                            </td>
+                            <td style="width: 12px"></td>
+                          </tr>
+                          <tr>
+                            <td
+                              style="padding-top: 12px; height: 0; font-size: 0"
+                            ></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        role="presentation"
+                        class="x_table__padded"
+                      >
+                        <colgroup>
+                          <col span="1" />
+                          <col style="width: 0" span="1" />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <td style="padding-right: 0">
+                              <table
+                                border="0"
+                                cellspacing="0"
+                                cellpadding="0"
+                                width="100%"
+                                role="presentation"
+                              >
+                                <tbody>
+                                  <tr>
+                                    <td>Productos</td>
+                                  </tr>
+                                  <tr>
+                                    <td
+                                      style="
+                                        color: rgb(168, 168, 168) !important;
+                                        font-size: 0.875em;
+                                        padding-top: 5px;
+                                      "
+                                      data-ogsc="rgb(110, 110, 110)"
+                                    ></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td
+                              style="white-space: nowrap; vertical-align: top"
+                              align="right"
+                            >
+                              {{total_products}} €
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding-right: 0">
+                              <table
+                                border="0"
+                                cellspacing="0"
+                                cellpadding="0"
+                                width="100%"
+                                role="presentation"
+                              >
+                                <tbody>
+                                  <tr>
+                                    <td>Entrega y tarifas</td>
+                                  </tr>
+
+                                  <!-- <tr>
+                                    <td
+                                      style="
+                                        color: rgb(168, 168, 168) !important;
+                                        font-size: 0.875em;
+                                        padding-top: 5px;
+                                      "
+                                      data-ogsc="rgb(110, 110, 110)"
+                                    >
+                                      Base imponible {{total_shipping_tax_excl}}
+                                      € más IVA ({{carrier_tax_rate}}%)
+                                      {{total_shipping_tax}} €
+                                    </td>
+                                  </tr> -->
+                                  {{detail_shipping_section}}
+                                  <tr>
+                                    <td
+                                      style="
+                                        color: rgb(168, 168, 168) !important;
+                                        font-size: 0.875em;
+                                        padding-top: 5px;
+                                      "
+                                      data-ogsc="rgb(110, 110, 110)"
+                                    ></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+
+                            <!-- <td
+                              style="white-space: nowrap; vertical-align: top"
+                              align="right"
+                            >
+                              {{total_shipping_tax_incl}} €
+                            </td> -->
+                            {{total_shipping_section}}
+                            <!-- <td>
+                              <span
+                                class="x_product__promotion"
+                                data-ogsc=""
+                                data-ogsb=""
+                                style="
+                                  color: rgb(255, 255, 255) !important;
+                                  background-color: rgb(99, 60, 0) !important;
+                                "
+                                >Gratis</span
+                              >
+                            </td> -->
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table
+                style="max-width: 600px"
+                border="0"
+                cellspacing="0"
+                cellpadding="0"
+                width="100%"
+                role="presentation"
+                class="x_body__background"
+              >
+                <colgroup>
+                  <col style="width: 13px" span="1" />
+                  <col span="1" />
+                  <col style="width: 13px" span="1" />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td
+                      style="border-radius: 0 13px 13px 0; width: 13px"
+                      class="x_indent"
+                    >
+                      &nbsp;
+                    </td>
+                    <td style="padding: 0 12px">
+                      <table
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        border="0"
+                      >
+                        <tbody>
+                          <tr>
+                            <td
+                              style="
+                                background: none;
+                                border-top: 2px dashed #d8d8d8;
+                                font-size: 0;
+                              "
+                            >
+                              &nbsp;
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                    <td
+                      style="border-radius: 13px 0 0 13px; width: 13px"
+                      class="x_indent"
+                    >
+                      &nbsp;
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table
+                style="max-width: 600px"
+                border="0"
+                cellspacing="0"
+                cellpadding="0"
+                width="100%"
+                role="presentation"
+              >
+                <tbody>
+                  <tr>
+                    <td
+                      style="border-radius: 0 0 16px 16px"
+                      class="x_body__details x_body__background"
+                    >
+                      <table
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        role="presentation"
+                        class="x_table__padded"
+                      >
+                        <colgroup>
+                          <col span="1" />
+                          <col style="width: 0" span="1" />
+                        </colgroup>
+                        <tbody>
+                          <tr style="font-size: 1.25em; font-weight: bold">
+                            <td style="padding-right: 0">Total</td>
+                            <td
+                              style="white-space: nowrap; vertical-align: top"
+                              align="right"
+                            >
+                              {{total}} €
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        role="presentation"
+                        class="x_table__padded"
+                      >
+                        <tbody>
+                          <tr>
+                            <td style="padding-top: 0; font-size: 0; height: 0">
+                              &nbsp;
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td
+                              style="padding-top: 12px; font-size: 0; height: 0"
+                            >
+                              &nbsp;
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table
+                border="0"
+                cellspacing="0"
+                cellpadding="0"
+                width="100%"
+                role="presentation"
+              >
+                <tbody>
+                  <tr>
+                    <td style="padding-top: 24px; font-size: 0; height: 0">
+                      &nbsp;
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table
+                style="max-width: 600px"
+                border="0"
+                cellspacing="0"
+                cellpadding="0"
+                width="100%"
+                role="presentation"
+              >
+                <tbody>
+                  <tr>
+                    <td
+                      style="border-radius: 16px"
+                      class="x_body__details x_body__background"
+                    >
+                      <table
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        role="presentation"
+                      >
+                        <tbody>
+                          <tr>
+                            <td>
+                              <table
+                                border="0"
+                                cellspacing="0"
+                                cellpadding="0"
+                                width="100%"
+                                role="presentation"
+                                class="x_table__padded"
+                              >
+                                <colgroup>
+                                  <col span="1" />
+                                  <col style="width: 180px" span="1" />
+                                </colgroup>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <strong>Detalles de la entrega</strong>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <table
+                                style="height: 1px"
+                                class="x_body__delivery-details"
+                                border="0"
+                                cellspacing="0"
+                                cellpadding="0"
+                                width="100%"
+                                role="presentation"
+                              >
+                                <tbody>
+                                  <tr>
+                                    <td
+                                      style="
+                                        vertical-align: top;
+                                        padding: 12px 0 24px 0;
+                                      "
+                                    >
+                                      <table
+                                        border="0"
+                                        cellspacing="0"
+                                        cellpadding="0"
+                                        width="100%"
+                                        role="presentation"
+                                      >
+                                        <tbody>
+                                          <tr>
+                                            <td style="width: 12px"></td>
+                                            <td style="width: 24px">
+                                              <img
+                                                style="
+                                                  width: 24px;
+                                                  height: 24px;
+                                                "
+                                                height="24"
+                                                width="24"
+                                                alt="location"
+                                                src="https://www.toolstock.info/img/location5.png"
+                                                data-imagetype="External"
+                                              />
+                                            </td>
+                                            <td style="width: 20px"></td>
+                                            <td>
+                                              <table
+                                                border="0"
+                                                cellspacing="0"
+                                                cellpadding="0"
+                                                width="100%"
+                                                role="presentation"
+                                              >
+                                                <tbody>
+                                                  <tr>
+                                                    <td>
+                                                      <span
+                                                        style="
+                                                          font-size: 0.75em;
+                                                          background-color: rgb(
+                                                            79,
+                                                            79,
+                                                            83
+                                                          ) !important;
+                                                        "
+                                                        class="x_highlight"
+                                                        data-ogsb=""
+                                                        >Entrega a</span
+                                                      >
+                                                    </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td
+                                                      style="
+                                                        padding-top: 5px;
+                                                        color: inherit !important;
+                                                        text-decoration: none !important;
+                                                      "
+                                                    >
+                                                      {{address}}
+                                                    </td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table
+                border="0"
+                cellspacing="0"
+                cellpadding="0"
+                width="100%"
+                role="presentation"
+              >
+                <tbody>
+                  <tr>
+                    <td class="x_advertisement__margin-top"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table
+                style="max-width: 600px"
+                border="0"
+                cellspacing="0"
+                cellpadding="0"
+                width="100%"
+                role="presentation"
+              >
+                <tbody>
+                  <tr>
+                    <td class="x_advertisement">
+                      <table
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        role="presentation"
+                        class="x_table__padded"
+                      >
+                        <colgroup>
+                          <col span="1" />
+                          <col style="width: 96px" span="1" />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <table
+                                border="0"
+                                cellspacing="0"
+                                cellpadding="0"
+                                width="100%"
+                                role="presentation"
+                              >
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <b
+                                        style="
+                                          font-size: 1.375em;
+                                          font-weight: bold;
+                                        "
+                                        >Gracias por confiar en nosotros</b
+                                      ><br />
+                                      <span
+                                        >Te informaremos cuando tu pedido sea
+                                        enviado.</span
+                                      >
+                                      <div style="margin-top: 10px">
+                                        <small>Atentamente,</small>
+                                      </div>
+                                      <span
+                                        ><small
+                                          >El equipo de
+                                          <strong>Toolstock</strong></small
+                                        ></span
+                                      >
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td
+                                      style="
+                                        padding-top: 24px;
+                                        font-size: 0;
+                                        height: 0;
+                                      "
+                                    >
+                                      &nbsp;
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <a
+                                        style="
+                                          padding: 12px 16px;
+                                          border-radius: 20px;
+                                          font-size: 0.875em;
+                                          font-weight: bold;
+                                          text-decoration: none;
+                                          color: rgb(255, 255, 255) !important;
+                                          background-color: #ca5227 !important;
+                                        "
+                                        class="x_advertisement__button"
+                                        data-auth="NotApplicable"
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                        href="https://www.toolstock.info/"
+                                        title="https://www.toolstock.info/"
+                                        data-linkindex="0"
+                                        data-ogsc=""
+                                        data-ogsb=""
+                                        >Seguir comprando</a
+                                      >
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td
+                                      style="
+                                        padding-top: 12px;
+                                        font-size: 0;
+                                        height: 0;
+                                      "
+                                    >
+                                      &nbsp;
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td>
+                              <img
+                                style="width: 96px; height: 96px"
+                                height="96"
+                                width="96"
+                                alt="referal_icon"
+                                src="https://www.toolstock.info/img/handshake.png"
+                                data-imagetype="External"
+                              />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td style="padding-top: 48px" align="center">
+              <table
+                style="max-width: 1200px"
+                border="0"
+                cellspacing="0"
+                cellpadding="0"
+                width="100%"
+                role="presentation"
+              >
+                <tbody>
+                  <tr>
+                    <td
+                      style="background-color: #444444; border: 0 solid #1c1c1c"
+                      align="center"
+                    >
+                      <table
+                        style="
+                          max-width: 600px;
+                          text-align: center;
+                          color: white;
+                        "
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        role="presentation"
+                      >
+                        <tbody>
+                          <tr>
+                            <td
+                              style="padding: 40px 12px 8px; font-size: 1.5em"
+                            >
+                              ¿Tienes preguntas?
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 0 24px 40px; line-height: 24px">
+                              Escribenos a nuestro correo
+                              <a
+                                style="color: #ec8c69"
+                                data-auth="NotApplicable"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                href="mailto:info@toolstock.info"
+                                title="email Toolstock"
+                                data-linkindex="1"
+                                >info@toolstock.info</a
+                              >
+                              o a traves de nuestro whatsapp
+                              <a
+                                data-auth="NotApplicable"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                href="https://wa.me/34663142955"
+                                title="whatsapp Toolstock"
+                                data-linkindex="1"
+                                >663142955</a
+                              >
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td
+              style="padding: 10px 0; font-size: 0.6em; text-align: center"
+              class="x_company-info"
+            >
+              Toolstock SL, B67282871 - www.toolstock.info
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </body>
+</html>
