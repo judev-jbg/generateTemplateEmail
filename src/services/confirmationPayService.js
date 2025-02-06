@@ -72,8 +72,6 @@ async function generateTemplate({
     )
     .join("");
 
-  console.log(productRows);
-
   // Generar sección detalles de envío
   const detailShippingSection =
     Number(total_shipping_tax_incl_) === 0
@@ -121,8 +119,6 @@ async function generateTemplate({
         ${Number(total_shipping_tax_incl_).toFixed(2)} €
       </td>
     `;
-
-  console.log(customerAddition_.firstname[0]);
   // Hacer todos los reemplazos necesarios
   let htmlContent = template
     .replace("{{firstname}}", customerAddition_.firstname[0])
@@ -150,7 +146,6 @@ async function generateTemplate({
     );
   }
 
-  console.log(htmlContent);
   return htmlContent;
 }
 
