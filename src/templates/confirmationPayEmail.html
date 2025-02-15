@@ -14,21 +14,15 @@
       }
       .x_main .x_header__container {
         background: url(https://www.toolstock.info/img/pay.png) no-repeat bottom
-          right;
-        background-size: 250px;
+          right !important;
+        background-size: 250px !important;
         border-radius: 0 0 120px 0;
         object-fit: contain;
       }
-      @media (prefers-color-scheme: dark) {
-        .x_main .x_header {
-          background-color: #33270e !important;
-          color: white !important;
-        }
-        .x_main .x_header__container {
-          background: url(https://www.toolstock.info/img/pay-dark.png) no-repeat
-            bottom right !important;
-          background-size: 256px !important;
-        }
+      .x_main .x_logo {
+        background: url(https://www.toolstock.info/img/logo.png) no-repeat left;
+        background-size: 150px !important;
+        object-fit: cover;
       }
 
       .x_main {
@@ -49,12 +43,7 @@
         color: #2abb9b;
         text-decoration: none;
       }
-      .x_main .x_header__title {
-        font-size: 2.25em;
-        font-weight: bold;
-        padding: 24px 0;
-        letter-spacing: -1px;
-      }
+
       .x_main .x_header__subtitle {
         padding-right: 150px;
       }
@@ -148,7 +137,23 @@
           overflow: hidden;
         }
       }
+
       @media (prefers-color-scheme: dark) {
+        .x_main .x_header {
+          background-color: #33270e !important;
+          color: white !important;
+        }
+        .x_main .x_header__container {
+          background: url(https://www.toolstock.info/img/pay-dark.png) no-repeat
+            bottom right !important;
+          background-size: 250px !important;
+        }
+        .x_main .x_logo {
+          background: url(https://www.toolstock.info/img/logo-dark.png)
+            no-repeat left !important;
+          background-size: 150px !important;
+          object-fit: cover;
+        }
         .x_main .x_dark-mode {
           display: initial !important;
         }
@@ -289,37 +294,22 @@
                               >
                                 <tbody>
                                   <tr>
-                                    <td>
-                                      <img
-                                        class="x_light-mode"
-                                        style="
-                                          width: 150px;
-                                          background-image: none !important;
-                                        "
-                                        width="150"
-                                        alt="logo"
-                                        src="https://www.toolstock.info/img/logo.png"
-                                        data-imagetype="External"
-                                      />
-                                    </td>
+                                    <td
+                                      class="x_logo"
+                                      style="width: 100px; height: 100px"
+                                      data-imagetype="External"
+                                    ></td>
                                   </tr>
                                   <tr>
-                                    <td>
-                                      <img
-                                        class="x_dark-mode"
-                                        style="
-                                          width: 150px;
-                                          background-image: none !important;
-                                        "
-                                        width="150"
-                                        alt="logo"
-                                        src="https://www.toolstock.info/img/logo-dark.png"
-                                        data-imagetype="External"
-                                      />
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td class="x_header__title">
+                                    <td
+                                      class="x_header__title"
+                                      style="
+                                        font-size: 2.2rem;
+                                        font-weight: bold;
+                                        padding: 20px 0;
+                                        letter-spacing: -1px;
+                                      "
+                                    >
                                       Pedido confirmado
                                     </td>
                                   </tr>
@@ -945,7 +935,7 @@
                                       <span
                                         ><small
                                           >El equipo de
-                                          <strong>Toolstock</strong></small
+                                          <strong> Toolstock</strong></small
                                         ></span
                                       >
                                     </td>

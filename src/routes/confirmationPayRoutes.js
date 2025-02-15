@@ -4,9 +4,9 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const [order] = req.body.data;
-    const html = await generateTemplate(order);
-    res.json({ success: true, html: html, error: null });
+    const [order, customer, address] = req.body;
+    const html = await generateTemplate(order, customer, address);
+    res.json({ success: true, html, error: null });
   } catch (error) {
     res.status(500).json({ success: false, html: null, error: error.message });
   }
