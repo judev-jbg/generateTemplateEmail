@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const [order, customer, address] = req.body;
+    const { order, customer, address } = req.body;
     const html = await generateTemplate(order, customer, address);
     res.json({ success: true, html, error: null });
   } catch (error) {

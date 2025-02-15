@@ -1,14 +1,13 @@
 const fs = require("fs").promises;
 const path = require("path");
 
-async function generateTemplate({ order }, customer, address) {
+async function generateTemplate(order, customer, address) {
   const template = await fs.readFile(
     path.join(__dirname, "../templates/confirmationPayEmail.html"),
     "utf8"
   );
 
   const normalizeOrderRows = (order_data) => {
-    console.log(order_data);
     if (order_data.associations && order_data.associations.order_rows) {
       const orderRows = order_data.associations.order_rows;
 
