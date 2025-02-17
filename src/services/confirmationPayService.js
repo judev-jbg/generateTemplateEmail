@@ -96,6 +96,7 @@ async function generateTemplate(order, customer, address) {
             color: rgb(255, 255, 255) !important;
             background-color: rgb(99, 60, 0) !important;
             padding: 5px 10px;
+            border-radius: 5px;
           "
         >Gratis</span>
       </td>
