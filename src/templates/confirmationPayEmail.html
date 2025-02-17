@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Confirmación de pago - {{reference}}</title>
+    <title>Confirmación de pago</title>
   </head>
   <body>
     <style type="text/css">
@@ -402,44 +402,6 @@
                         class="x_table__padded"
                       >
                         <tbody>
-                          <!-- <tr style="vertical-align: top">
-                            <td><strong>{{product.quantity}}x</strong></td>
-                            <td class="x_product">
-                              <table
-                                border="0"
-                                cellspacing="0"
-                                cellpadding="0"
-                                width="100%"
-                                role="presentation"
-                              >
-                                <tbody>
-                                  <tr>
-                                    <td>{{product.name}}</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                            <td style="white-space: nowrap" align="right">
-                              <table
-                                border="0"
-                                cellspacing="0"
-                                cellpadding="0"
-                                width="100%"
-                                role="presentation"
-                              >
-                                <tbody>
-                                  <tr>
-                                    <td
-                                      style="white-space: nowrap"
-                                      align="right"
-                                    >
-                                      {{product.price}} €
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                          </tr> -->
                           {{products_table_content}}
                         </tbody>
                       </table>
@@ -535,21 +497,6 @@
                                   <tr>
                                     <td>Entrega y tarifas</td>
                                   </tr>
-
-                                  <!-- <tr>
-                                    <td
-                                      style="
-                                        color: rgb(168, 168, 168) !important;
-                                        font-size: 0.875em;
-                                        padding-top: 5px;
-                                      "
-                                      data-ogsc="rgb(110, 110, 110)"
-                                    >
-                                      Base imponible {{total_shipping_tax_excl}}
-                                      € más IVA ({{carrier_tax_rate}}%)
-                                      {{total_shipping_tax}} €
-                                    </td>
-                                  </tr> -->
                                   {{detail_shipping_section}}
                                   <tr>
                                     <td
@@ -564,26 +511,7 @@
                                 </tbody>
                               </table>
                             </td>
-
-                            <!-- <td
-                              style="white-space: nowrap; vertical-align: top"
-                              align="right"
-                            >
-                              {{total_shipping_tax_incl}} €
-                            </td> -->
                             {{total_shipping_section}}
-                            <!-- <td>
-                              <span
-                                class="x_product__promotion"
-                                data-ogsc=""
-                                data-ogsb=""
-                                style="
-                                  color: rgb(255, 255, 255) !important;
-                                  background-color: rgb(99, 60, 0) !important;
-                                "
-                                >Gratis</span
-                              >
-                            </td> -->
                           </tr>
                         </tbody>
                       </table>

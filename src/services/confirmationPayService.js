@@ -61,7 +61,7 @@ async function generateTemplate(order, customer, address) {
     .join("");
   // Generar sección detalles de envío
   const detailShippingSection =
-    Number(order_normalize.total_shipping_tax_incl) === 0
+    Number(order_normalize.total_shipping_tax_incl) != 0
       ? `
       <tr>
       <td
@@ -95,6 +95,7 @@ async function generateTemplate(order, customer, address) {
           style="
             color: rgb(255, 255, 255) !important;
             background-color: rgb(99, 60, 0) !important;
+            padding: 5px 10px;
           "
         >Gratis</span>
       </td>
@@ -125,12 +126,12 @@ async function generateTemplate(order, customer, address) {
   if (address.address2 && address.address2 !== "") {
     htmlContent = htmlContent.replace(
       "{{address}}",
-      `${address.address1}, ${address.address2},<br>${address.postcode}, ${address.city}`
+      `${address.address1}, ${address.address2},<br>${address.postcode} ${address.city}`
     );
   } else {
     htmlContent = htmlContent.replace(
       "{{address}}",
-      `${address.address1},<br>${address.postcode}, ${address.city}`
+      `${address.address1},<br>${address.postcode} ${address.city}`
     );
   }
   return htmlContent;
