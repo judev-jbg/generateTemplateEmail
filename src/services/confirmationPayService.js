@@ -61,27 +61,48 @@ async function generateTemplate(order, customer, address) {
     .join("");
   // Generar sección detalles de envío
   const detailShippingSection =
-    Number(order_normalize.total_shipping_tax_incl) != 0
-      ? `
-      <tr>
-      <td
-        style="
-          color: rgb(168, 168, 168) !important;
-          font-size: 0.875em;
-          padding-top: 5px;
-        "
-        data-ogsc="rgb(110, 110, 110)"
-      >
-        Base imponible ${Number(
-          order_normalize.total_shipping_tax_excl
-        ).toFixed(2)} € más IVA (${order_normalize.carrier_tax_rate}%)
-        ${(
-          Number(order_normalize.total_shipping_tax_incl) -
-          Number(order_normalize.total_shipping_tax_excl)
-        ).toFixed(2)} €
-      </td>
-      </tr>
-    `
+    Number(order_normalize.total_shipping_tax_incl) !== 0
+      ? Number(order_normalize.total_shipping_tax_incl) ===
+        Number(order_normalize.total_shipping_tax_excl)
+        ? `
+            <tr>
+            <td
+              style="
+                color: rgb(168, 168, 168) !important;
+                font-size: 0.875em;
+                padding-top: 5px;
+              "
+              data-ogsc="rgb(110, 110, 110)"
+            >
+              Base imponible ${(
+                Number(order_normalize.total_shipping_tax_incl) / 1.21
+              ).toFixed(2)} € más IVA (${(
+            Number(order_normalize.total_shipping_tax_incl) * 0.21
+          ).toFixed(2)}%)
+              ${Number(order_normalize.total_shipping_tax_incl).toFixed(2)} €
+            </td>
+            </tr>
+          `
+        : `
+            <tr>
+            <td
+              style="
+                color: rgb(168, 168, 168) !important;
+                font-size: 0.875em;
+                padding-top: 5px;
+              "
+              data-ogsc="rgb(110, 110, 110)"
+            >
+              Base imponible ${Number(
+                order_normalize.total_shipping_tax_excl
+              ).toFixed(2)} € más IVA (${order_normalize.carrier_tax_rate}%)
+              ${(
+                Number(order_normalize.total_shipping_tax_incl) -
+                Number(order_normalize.total_shipping_tax_excl)
+              ).toFixed(2)} €
+            </td>
+            </tr>
+          `
       : "";
   // Generar sección total de envío
   const totalShippingSection =
@@ -106,7 +127,7 @@ async function generateTemplate(order, customer, address) {
         style="white-space: nowrap; vertical-align: top"
         align="right"
       >
-        ${Number(detailShippingSection.total_shipping_tax_incl).toFixed(2)} €
+        ${Number(order_normalize.total_shipping_tax_incl).toFixed(2)} €
       </td>
     `;
   // Hacer todos los reemplazos necesarios
