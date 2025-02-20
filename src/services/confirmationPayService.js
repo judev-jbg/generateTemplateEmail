@@ -129,7 +129,7 @@ async function generateTemplate(order, customer, address) {
       `
       : `
       <td
-        style="white-space: nowrap; vertical-align: top"
+        style="white-space: nowrap !important; vertical-align: top"
         align="right"
       >
         ${Number(order_normalize.total_shipping_tax_incl).toFixed(2)} €
