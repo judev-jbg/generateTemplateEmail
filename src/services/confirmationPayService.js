@@ -46,7 +46,7 @@ async function generateTemplate(order, customer, address) {
           <tbody>
             <tr>
               <td
-                style="white-space: nowrap"
+                style="white-space: nowrap !important"
                 align="right"
               >
                 ${Math.round(Number(product.unit_price_tax_incl)).toFixed(2)} €
