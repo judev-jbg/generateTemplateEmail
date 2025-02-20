@@ -114,7 +114,7 @@
         text-decoration: none !important;
       }
       .x_main .x_table__padded td.x_product {
-        padding: 12px 0;
+        padding: 12px;
       }
 
       .x_main .x_dark-mode {
@@ -596,7 +596,10 @@
                           <tr style="font-size: 1.25em; font-weight: bold">
                             <td style="padding-right: 0">Total</td>
                             <td
-                              style="white-space: nowrap; vertical-align: top"
+                              style="
+                                white-space: nowrap !important;
+                                vertical-align: top;
+                              "
                               align="right"
                             >
                               {{total}} €
