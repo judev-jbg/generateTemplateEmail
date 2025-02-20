@@ -77,7 +77,14 @@ async function generateTemplate(order, customer, address) {
               Base imponible ${(
                 Number(order_normalize.total_shipping_tax_incl) / 1.21
               ).toFixed(2)} € más IVA (21%)
-              ${Number(order_normalize.total_shipping_tax_incl).toFixed(2)} €
+              ${
+                Number(order_normalize.total_shipping_tax_incl) -
+                parseFloat(
+                  (
+                    Number(order_normalize.total_shipping_tax_incl) / 1.21
+                  ).toFixed(2)
+                )
+              } €
             </td>
             </tr>
           `
