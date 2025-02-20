@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Confirmación de pago</title>
+    <title>Confirmación de envio de tu pedido</title>
   </head>
   <body>
     <style type="text/css">
@@ -13,8 +13,8 @@
         max-width: 1200px;
       }
       .x_main .x_header__container {
-        background: url(https://www.toolstock.info/img/pay.png) no-repeat bottom
-          right !important;
+        background: url(https://www.toolstock.info/img/ship.png) no-repeat
+          bottom right !important;
         background-size: 250px !important;
         border-radius: 0 0 120px 0;
         object-fit: contain;
@@ -144,8 +144,8 @@
           color: white !important;
         }
         .x_main .x_header__container {
-          background: url(https://www.toolstock.info/img/pay-dark.png) no-repeat
-            bottom right !important;
+          background: url(https://www.toolstock.info/img/ship-dark.png)
+            no-repeat bottom right !important;
           background-size: 250px !important;
         }
         .x_main .x_logo {
@@ -310,14 +310,15 @@
                                         letter-spacing: -1px;
                                       "
                                     >
-                                      Pedido confirmado
+                                      Pedido enviado
                                     </td>
                                   </tr>
                                   <tr>
                                     <td class="x_header__subtitle">
-                                      Hola {{firstname}}, hemos recibido tu pago
-                                      y queremos confirmarte que ya estamos
-                                      preparando tu pedido.
+                                      Hola {{firstname}},<br />
+                                      ¡Tenemos buenas noticias! 🎉 <br />
+                                      Tu pedido ha sido enviado y está en
+                                      camino.
                                     </td>
                                   </tr>
                                 </tbody>
@@ -351,7 +352,7 @@
                 <tbody>
                   <tr>
                     <td
-                      style="border-radius: 16px 16px 0 0; padding-bottom: 0"
+                      style="border-radius: 16px; padding-bottom: 40px"
                       class="x_body__details x_body__background"
                     >
                       <table
@@ -364,7 +365,7 @@
                       >
                         <tbody>
                           <tr>
-                            <td><strong>Detalles de los productos</strong></td>
+                            <td><strong>Detalles del envío</strong></td>
                             <td
                               style="
                                 white-space: nowrap;
@@ -383,71 +384,11 @@
                               >
                             </td>
                           </tr>
-                        </tbody>
-                      </table>
-
-                      <table
-                        align="left"
-                        border="0"
-                        cellspacing="0"
-                        cellpadding="0"
-                        width="100%"
-                        role="presentation"
-                        class="x_table__padded"
-                      >
-                        <tbody>
-                          {{products_table_content}}
-                        </tbody>
-                      </table>
-
-                      <table
-                        cellspacing="0"
-                        cellpadding="0"
-                        width="100%"
-                        border="0"
-                      >
-                        <tbody>
                           <tr>
-                            <td
-                              style="padding-top: 12px; height: 0; font-size: 0"
-                            ></td>
-                          </tr>
-                          <tr>
-                            <td style="width: 12px"></td>
-                            <td
-                              style="
-                                background: none;
-                                border-top: 2px dashed #d8d8d8;
-                                font-size: 0;
-                              "
-                            >
-                              &nbsp;
-                            </td>
-                            <td style="width: 12px"></td>
-                          </tr>
-                          <tr>
-                            <td
-                              style="padding-top: 12px; height: 0; font-size: 0"
-                            ></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <table
-                        border="0"
-                        cellspacing="0"
-                        cellpadding="0"
-                        width="100%"
-                        role="presentation"
-                        class="x_table__padded"
-                      >
-                        <colgroup>
-                          <col span="1" />
-                          <col style="width: 0" span="1" />
-                        </colgroup>
-                        <tbody>
-                          <tr>
-                            <td style="padding-right: 0">
+                            <td style="padding: 0" colspan="2">
                               <table
+                                style="height: 1px"
+                                class="x_body__delivery-details"
                                 border="0"
                                 cellspacing="0"
                                 cellpadding="0"
@@ -456,180 +397,180 @@
                               >
                                 <tbody>
                                   <tr>
-                                    <td>Productos</td>
+                                    <td
+                                      style="
+                                        vertical-align: top;
+                                        padding: 5px 0;
+                                      "
+                                    >
+                                      <table
+                                        border="0"
+                                        cellspacing="0"
+                                        cellpadding="0"
+                                        width="100%"
+                                        role="presentation"
+                                      >
+                                        <tbody>
+                                          <tr>
+                                            <td style="width: 12px"></td>
+                                            <td style="width: 24px">
+                                              <img
+                                                style="
+                                                  width: 24px;
+                                                  height: 24px;
+                                                  padding-top: 5px;
+                                                "
+                                                height="24"
+                                                width="24"
+                                                alt="location"
+                                                src="/transport.png"
+                                                data-imagetype="External"
+                                              />
+                                            </td>
+                                            <td style="width: 24px"></td>
+                                            <td>Transportista: {{address}}</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
                                   </tr>
                                   <tr>
                                     <td
                                       style="
-                                        color: rgb(168, 168, 168) !important;
-                                        font-size: 0.875em;
-                                        padding-top: 5px;
+                                        vertical-align: top;
+                                        padding: 5px 0;
                                       "
-                                      data-ogsc="rgb(110, 110, 110)"
-                                    ></td>
+                                    >
+                                      <table
+                                        border="0"
+                                        cellspacing="0"
+                                        cellpadding="0"
+                                        width="100%"
+                                        role="presentation"
+                                      >
+                                        <tbody>
+                                          <tr>
+                                            <td style="width: 12px"></td>
+                                            <td style="width: 24px">
+                                              <img
+                                                style="
+                                                  padding-top: 5px;
+                                                  width: 24px;
+                                                  height: 24px;
+                                                "
+                                                height="24"
+                                                width="24"
+                                                alt="location"
+                                                src="/qr.png"
+                                                data-imagetype="External"
+                                              />
+                                            </td>
+                                            <td style="width: 24px"></td>
+                                            <td>
+                                              Nº de seguimiento:
+                                              {{traking_number}}
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
                                   </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                            <td
-                              style="
-                                white-space: nowrap !important;
-                                vertical-align: top;
-                              "
-                              align="right"
-                            >
-                              {{total_products}} €
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="padding-right: 0">
-                              <table
-                                border="0"
-                                cellspacing="0"
-                                cellpadding="0"
-                                width="100%"
-                                role="presentation"
-                              >
-                                <tbody>
-                                  <tr>
-                                    <td>Entrega y tarifas</td>
-                                  </tr>
-                                  {{detail_shipping_section}}
                                   <tr>
                                     <td
                                       style="
-                                        color: rgb(168, 168, 168) !important;
-                                        font-size: 0.875em;
-                                        padding-top: 5px;
+                                        vertical-align: top;
+                                        padding: 5px 0;
                                       "
-                                      data-ogsc="rgb(110, 110, 110)"
-                                    ></td>
+                                    >
+                                      <table
+                                        border="0"
+                                        cellspacing="0"
+                                        cellpadding="0"
+                                        width="100%"
+                                        role="presentation"
+                                      >
+                                        <tbody>
+                                          <tr>
+                                            <td style="width: 12px"></td>
+                                            <td style="width: 24px">
+                                              <img
+                                                style="
+                                                  object-fit: none;
+                                                  width: 24px;
+                                                  height: 24px;
+                                                "
+                                                height="24"
+                                                width="24"
+                                                alt="location"
+                                                src="/tracking.png"
+                                                data-imagetype="External"
+                                              />
+                                            </td>
+                                            <td style="width: 24px"></td>
+                                            <td>
+                                              Puedes hacer el seguimiento de tu
+                                              envío haciendo clic en el
+                                              siguiente boton:
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
                                   </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                            {{total_shipping_section}}
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table
-                style="max-width: 600px"
-                border="0"
-                cellspacing="0"
-                cellpadding="0"
-                width="100%"
-                role="presentation"
-                class="x_body__background"
-              >
-                <colgroup>
-                  <col style="width: 13px" span="1" />
-                  <col span="1" />
-                  <col style="width: 13px" span="1" />
-                </colgroup>
-                <tbody>
-                  <tr>
-                    <td
-                      style="border-radius: 0 13px 13px 0; width: 13px"
-                      class="x_indent"
-                    >
-                      &nbsp;
-                    </td>
-                    <td style="padding: 0 12px">
-                      <table
-                        cellspacing="0"
-                        cellpadding="0"
-                        width="100%"
-                        border="0"
-                      >
-                        <tbody>
-                          <tr>
-                            <td
-                              style="
-                                background: none;
-                                border-top: 2px dashed #d8d8d8;
-                                font-size: 0;
-                              "
-                            >
-                              &nbsp;
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                    <td
-                      style="border-radius: 13px 0 0 13px; width: 13px"
-                      class="x_indent"
-                    >
-                      &nbsp;
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table
-                style="max-width: 600px"
-                border="0"
-                cellspacing="0"
-                cellpadding="0"
-                width="100%"
-                role="presentation"
-              >
-                <tbody>
-                  <tr>
-                    <td
-                      style="border-radius: 0 0 16px 16px"
-                      class="x_body__details x_body__background"
-                    >
-                      <table
-                        border="0"
-                        cellspacing="0"
-                        cellpadding="0"
-                        width="100%"
-                        role="presentation"
-                        class="x_table__padded"
-                      >
-                        <colgroup>
-                          <col span="1" />
-                          <col style="width: 0" span="1" />
-                        </colgroup>
-                        <tbody>
-                          <tr style="font-size: 1.25em; font-weight: bold">
-                            <td style="padding-right: 0">Total</td>
-                            <td
-                              style="
-                                white-space: nowrap !important;
-                                vertical-align: top;
-                              "
-                              align="right"
-                            >
-                              {{total}} €
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <table
-                        border="0"
-                        cellspacing="0"
-                        cellpadding="0"
-                        width="100%"
-                        role="presentation"
-                        class="x_table__padded"
-                      >
-                        <tbody>
-                          <tr>
-                            <td style="padding-top: 0; font-size: 0; height: 0">
-                              &nbsp;
-                            </td>
-                          </tr>
+                                  <tr>
+                                    <td
+                                      style="
+                                        vertical-align: top;
+                                        padding: 20px 0;
+                                      "
+                                    >
+                                      <table
+                                        border="0"
+                                        cellspacing="0"
+                                        cellpadding="0"
+                                        width="100%"
+                                        role="presentation"
+                                      >
+                                        <tbody>
+                                          <tr>
+                                            <td style="width: 12px"></td>
+                                            <td style="width: 24px"></td>
+                                            <td style="width: 24px"></td>
+                                            <td>
+                                              <a
+                                                style="
+                                                  padding: 12px 16px;
+                                                  border-radius: 20px;
+                                                  font-size: 0.875em;
+                                                  font-weight: bold;
+                                                  text-decoration: none;
 
-                          <tr>
-                            <td
-                              style="padding-top: 12px; font-size: 0; height: 0"
-                            >
-                              &nbsp;
+                                                  color: rgb(
+                                                    255,
+                                                    255,
+                                                    255
+                                                  ) !important;
+                                                  background-color: #ca3a27 !important;
+                                                "
+                                                class="x_advertisement__button"
+                                                data-auth="NotApplicable"
+                                                rel="noopener noreferrer"
+                                                target="_blank"
+                                                href="http://extranet.gls-spain.es/Extranet/public/ExpedicionASM.aspx?codigo={{traking_number}}&cpDst={{cp_destination}}"
+                                                title="Enlace de seguimiento"
+                                                data-linkindex="0"
+                                                data-ogsc=""
+                                                data-ogsb=""
+                                                >Sigue tu envío →</a
+                                              >
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
                             </td>
                           </tr>
                         </tbody>
@@ -638,6 +579,7 @@
                   </tr>
                 </tbody>
               </table>
+
               <table
                 border="0"
                 cellspacing="0"
@@ -653,6 +595,80 @@
                   </tr>
                 </tbody>
               </table>
+
+              <table
+                style="max-width: 600px"
+                border="0"
+                cellspacing="0"
+                cellpadding="0"
+                width="100%"
+                role="presentation"
+              >
+                <tbody>
+                  <tr>
+                    <td
+                      style="border-radius: 16px"
+                      class="x_body__details x_body__background"
+                    >
+                      <table
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="100%"
+                        role="presentation"
+                      >
+                        <tbody>
+                          <tr>
+                            <td>
+                              <table
+                                border="0"
+                                cellspacing="0"
+                                cellpadding="0"
+                                width="100%"
+                                role="presentation"
+                                class="x_table__padded"
+                              >
+                                <tbody>
+                                  <tr>
+                                    <td style="padding: 15px" align="center">
+                                      <small>
+                                        Tambien puedes rastrear tu envío desde
+                                        la página web del transportista,
+                                        ingresando tu número de seguimiento y
+                                        codigo postal:
+                                        <a
+                                          style="color: #ca5227 !important"
+                                          href="https://www.gls-spain.es/es/recibir-paquetes/seguimiento-envio/"
+                                          ><b>Ir a la página</b></a
+                                        ></small
+                                      >
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table
+                border="0"
+                cellspacing="0"
+                cellpadding="0"
+                width="100%"
+                role="presentation"
+              >
+                <tbody>
+                  <tr>
+                    <td class="x_advertisement__margin-top"></td>
+                  </tr>
+                </tbody>
+              </table>
+
               <table
                 style="max-width: 600px"
                 border="0"
@@ -797,6 +813,7 @@
                   </tr>
                 </tbody>
               </table>
+
               <table
                 border="0"
                 cellspacing="0"
@@ -810,6 +827,7 @@
                   </tr>
                 </tbody>
               </table>
+
               <table
                 style="max-width: 600px"
                 border="0"
@@ -851,11 +869,11 @@
                                           font-size: 1.375em;
                                           font-weight: bold;
                                         "
-                                        >Gracias por confiar en nosotros</b
+                                        >¡Esperamos que disfrutes tu compra!</b
                                       ><br />
                                       <span
-                                        >Te informaremos cuando tu pedido sea
-                                        enviado.</span
+                                        >Estaremos encantados de recibirte
+                                        nuevamente en nuestra tienda</span
                                       >
                                       <div style="margin-top: 10px">
                                         <small>Atentamente,</small>
