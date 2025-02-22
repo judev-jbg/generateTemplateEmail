@@ -3,7 +3,7 @@ const path = require("path");
 
 async function generateTemplate(order, customer, address) {
   const template = await fs.readFile(
-    path.join(__dirname, "../templates/confirmationPayEmail.html"),
+    path.join(__dirname, "../templates/confirmationInvoiceEmail.html"),
     "utf8"
   );
 
