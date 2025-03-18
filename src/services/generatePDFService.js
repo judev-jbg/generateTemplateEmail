@@ -1,9 +1,11 @@
 const React = require("react");
 const ReactDOMServer = require("react-dom/server");
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
 const InvoiceGenerator = require("../components/InvoiceGenerator");
 
 async function generatePDF(data) {
+  const browser = null;
+
   const formatDate = (dateStr) => {
     const date = new Date(dateStr);
 
@@ -55,7 +57,12 @@ async function generatePDF(data) {
   </html>
 `;
 
-  const browser = await puppeteer.launch();
+  browser = await puppeteer.launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+    headless: true,
+  });
+
   const page = await browser.newPage();
   await page.setContent(fullHtml);
 

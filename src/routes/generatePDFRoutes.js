@@ -8,6 +8,7 @@ router.post("/", async (req, res) => {
     const pdf = await generatePDF(x);
     res.json({ success: true, pdf, error: null });
   } catch (error) {
+    console.error("Error generando PDF:", error);
     res.status(500).json({ success: false, pdf: null, error: error.message });
   }
 });
