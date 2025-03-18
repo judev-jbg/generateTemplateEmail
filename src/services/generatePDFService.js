@@ -4,20 +4,34 @@ const puppeteer = require("puppeteer");
 const InvoiceGenerator = require("../components/InvoiceGenerator");
 
 async function generatePDF(data) {
-  const normalizeOrderRows = (order_data) => {
-    if (order_data.associations && order_data.associations.order_rows) {
-      const orderRows = order_data.associations.order_rows;
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
 
-      // Si order_row es un objeto, lo convertimos en un array
-      if (orderRows.order_row && !Array.isArray(orderRows.order_row)) {
-        orderRows.order_row = [orderRows.order_row];
-      }
-    }
-    return order_data;
+    const day = date.getDate();
+    const month = date.toLocaleDateString("default", { month: "short" });
+    const year = date.getFullYear();
+
+    return `${day} ${month}. ${year}`;
   };
-  const order_normalize = normalizeOrderRows(data);
 
-  const element = React.createElement(InvoiceGenerator, order_normalize);
+  const element = React.createElement(InvoiceGenerator, {
+    invoiceNumber: data.num_factura,
+    date: formatDate(data.fecha_factura),
+    clientNumber: data.id_cliente,
+    clientName: data.cliente,
+    clientAddress: data.direccion,
+    clientCity: data.ciudad,
+    clientState: data.provincia,
+    clientCountry: data.pais,
+    clientNIF: data.nif,
+    orderNumber: data.id_pedido_cliente,
+    albaran: data.num_albaran,
+    dateAlbaran: formatDate(data.fecha_albaran),
+    items: data.products,
+    subtotal: data.total_iva_excl,
+    tax: data.total_iva,
+    total: data.total_iva_incl,
+  });
   const html = ReactDOMServer.renderToString(InvoiceGenerator(element));
 
   const fullHtml = `
@@ -27,6 +41,15 @@ async function generatePDF(data) {
       <meta charset="UTF-8">
     </head>
     <body>
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+
       ${html}
     </body>
   </html>

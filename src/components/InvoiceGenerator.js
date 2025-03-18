@@ -2,41 +2,40 @@ const React = require("react");
 const path = require("path");
 
 const InvoiceGenerator = ({
-  invoiceNumber = "N-003572",
-  date = "20 nov. 2024",
-  clientNumber = "430019126",
-  clientName = "RODAMIENTOS DUERO SL",
-  clientAddress = "AVDA. MONTECILLO Nº10 NAVE 6",
-  clientCity = "09400 ARANDA DE DUERO",
-  clientState = "09400 ARANDA DE DUERO",
-  clientCountry = "09400 ARANDA DE DUERO",
-  clientNIF = "B09040460",
-  shippingName = "RODAMIENTOS DUERO SL",
-  shippingAddress = "AVDA. MONTECILLO Nº10 NAVE 6",
-  shippingCity = "09400 ARANDA DE DUERO",
-  orderNumber = "402-4623212-0053135",
-  deliveryNote = "N-3.639",
+  invoiceNumber = "",
+  date = "",
+  clientNumber = "",
+  clientName = "",
+  clientAddress = "",
+  clientCity = "",
+  clientState = "",
+  clientCountry = "",
+  clientNIF = "",
+  orderNumber = "",
+  albaran = "",
+  dateAlbaran = "",
   items = [
     {
-      code: "4933448390",
-      description: "ASPIRADOR DE MANO M12 - M12HV-0",
-      quantity: 1,
-      price: 95.04,
-      discount: 0.0,
-      total: 95.04,
+      id_articulo: "",
+      descripcion: "",
+      cantidad: 0,
+      precio: 0.0,
+      descuento: 0.0,
+      total: 0.0,
     },
   ],
-  subtotal = 95.04,
-  tax = 19.96,
-  total = 115.0,
+  subtotal = 0.0,
+  tax = 0.0,
+  total = 0.0,
 }) => {
   const logoPath = path.join(__dirname, "../assets/img/logo.png");
   return (
     <div
       style={{
         width: "210mm",
-        minHeight: "297mm",
-        padding: "2rem 3rem",
+        height: "297mm",
+        maxHeight: "297mm",
+        padding: "2rem",
         backgroundColor: "white",
         fontFamily: "Helvetica, Arial, sans-serif, sans-serif",
         fontSize: "12px",
@@ -93,7 +92,7 @@ const InvoiceGenerator = ({
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "1fr",
             gap: "20px",
             marginBottom: "20px",
           }}
@@ -120,25 +119,6 @@ const InvoiceGenerator = ({
               {clientState} {clientCountry}
             </p>
             <p style={{ margin: "0" }}>N.I.F. {clientNIF}</p>
-          </div>
-          <div
-            style={{
-              border: "1px solid #000",
-              padding: "10px",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "12px",
-                fontWeight: "bold",
-                marginBottom: "10px",
-              }}
-            >
-              DIRECCIÓN DE ENVÍO FACTURA:
-            </h2>
-            <p style={{ margin: "0 0 5px 0" }}>{shippingName}</p>
-            <p style={{ margin: "0 0 5px 0" }}>{shippingAddress}</p>
-            <p style={{ margin: "0" }}>{shippingCity}</p>
           </div>
         </div>
 
@@ -202,7 +182,7 @@ const InvoiceGenerator = ({
 
         <div style={{ marginBottom: "20px" }}>
           <p style={{ margin: "0 0 5px 0" }}>
-            <b>Albarán:</b> {deliveryNote}. <b>De:</b> {date}
+            <b>Albarán:</b> {albaran}. <b>De:</b> {dateAlbaran}
           </p>
           <p style={{ margin: "0" }}>
             <b>Su Pedido Nº:</b> {orderNumber}
@@ -239,10 +219,10 @@ const InvoiceGenerator = ({
             {items.map((item, index) => (
               <tr key={index}>
                 <td style={{ padding: "10px", height: "25px", width: "90px" }}>
-                  {item.code}
+                  {item.id_articulo}
                 </td>
                 <td style={{ padding: "10px", height: "25px" }}>
-                  {item.description}
+                  {item.descripcion}
                 </td>
                 <td
                   style={{
@@ -252,7 +232,7 @@ const InvoiceGenerator = ({
                     width: "70px",
                   }}
                 >
-                  {item.quantity}
+                  {item.cantidad}
                 </td>
                 <td
                   style={{
@@ -262,7 +242,7 @@ const InvoiceGenerator = ({
                     width: "70px",
                   }}
                 >
-                  {item.price.toFixed(2)}
+                  {item.precio.toFixed(2)}
                 </td>
                 <td
                   style={{
@@ -272,7 +252,7 @@ const InvoiceGenerator = ({
                     width: "40px",
                   }}
                 >
-                  {item.discount}
+                  {item.descuento}
                 </td>
                 <td
                   style={{
@@ -364,7 +344,14 @@ const InvoiceGenerator = ({
                   textAlign: "center",
                 }}
               >
-                21,00
+                {(
+                  parseFloat(
+                    (
+                      parseFloat(tax.toFixed(2)) /
+                      parseFloat(subtotal.toFixed(2))
+                    ).toFixed(2)
+                  ) * 100
+                ).toFixed(2) + ".00"}
               </td>
               <td
                 style={{
@@ -436,7 +423,7 @@ const InvoiceGenerator = ({
             VENCIMIENTOS
           </small>
           <small style={{ margin: "0" }}>
-            {date} {total.toFixed(2)} Tarjeta
+            {date} {total.toFixed(2)}
           </small>
         </div>
 
