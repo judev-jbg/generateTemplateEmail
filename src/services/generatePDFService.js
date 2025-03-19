@@ -16,25 +16,49 @@ async function generatePDF(data) {
     return `${day} ${month}. ${year}`;
   };
 
+  const capitalizeText = (text) => {
+    const palabras = text.split(" ");
+
+    const palabrasCapitalizadas = palabras.map((palabra) => {
+      // Manejar palabras vacías
+      if (palabra.length === 0) return palabra;
+
+      // Convertir la primera letra a mayúscula y el resto a minúscula
+      return palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
+    });
+
+    // Unir las palabras nuevamente
+    return palabrasCapitalizadas.join(" ");
+  };
+
   const element = React.createElement(InvoiceGenerator, {
-    invoiceNumber: data.num_factura,
+    invoiceNumber: `${data.num_factura} - ${data.año_factura}`,
     date: formatDate(data.fecha_factura),
     clientNumber: data.id_cliente,
-    clientName: data.cliente,
-    clientAddress: data.direccion,
-    clientCity: data.ciudad,
-    clientState: data.provincia,
-    clientCountry: data.pais,
+    clientName: data.cliente.toUpperCase(),
+    clientAddress: capitalizeText(data.direccion),
+    clientCity: data.ciudad.toUpperCase(),
+    clientPostalCode: data.cod_postal,
+    clientState: data.provincia.toUpperCase(),
+    clientCountry: data.pais.toUpperCase(),
     clientNIF: data.nif,
     orderNumber: data.id_pedido_cliente,
     albaran: data.num_albaran,
     dateAlbaran: formatDate(data.fecha_albaran),
-    items: data.products,
+    items: data.products.map((item) => ({
+      id_articulo: item.product.id_articulo,
+      descripcion: item.product.descripcion,
+      cantidad: item.product.cantidad,
+      precio: item.product.precio,
+      descuento: item.product.descuento || 0,
+      total: item.product.total,
+    })),
     subtotal: data.total_iva_excl,
     tax: data.total_iva,
     total: data.total_iva_incl,
   });
-  const html = ReactDOMServer.renderToString(InvoiceGenerator(element));
+
+  const html = ReactDOMServer.renderToString(element);
 
   const fullHtml = `
   <!DOCTYPE html>

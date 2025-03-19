@@ -4,8 +4,8 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const x = req.body;
-    const pdf = await generatePDF(x);
+    const content = req.body;
+    const pdf = await generatePDF(content.data);
     res.json({ success: true, pdf, error: null });
   } catch (error) {
     console.error("Error generando PDF:", error);

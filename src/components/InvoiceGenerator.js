@@ -8,6 +8,7 @@ const InvoiceGenerator = ({
   clientName = "",
   clientAddress = "",
   clientCity = "",
+  clientPostalCode = "",
   clientState = "",
   clientCountry = "",
   clientNIF = "",
@@ -28,7 +29,6 @@ const InvoiceGenerator = ({
   tax = 0.0,
   total = 0.0,
 }) => {
-  const logoPath = path.join(__dirname, "../assets/img/logo.png");
   return (
     <div
       style={{
@@ -50,20 +50,21 @@ const InvoiceGenerator = ({
           style={{
             display: "flex",
             justifyContent: "space-between",
+            alignItems: "center",
             marginBottom: "20px",
           }}
         >
           <img
-            src={logoPath}
+            src="https://www.toolstock.info/img/logo.png"
             alt="TOOL STOCK"
             style={{
-              width: "200px",
-              height: "75px",
+              width: "150px",
+              height: "60px",
             }}
           />
           <h1
             style={{
-              fontSize: "70px",
+              fontSize: "55px",
               fontWeight: "bold",
               margin: 0,
               color: "#666666",
@@ -94,7 +95,7 @@ const InvoiceGenerator = ({
             display: "grid",
             gridTemplateColumns: "1fr",
             gap: "20px",
-            marginBottom: "20px",
+            marginBottom: "10px",
           }}
         >
           <div
@@ -114,11 +115,13 @@ const InvoiceGenerator = ({
             </h2>
             <p style={{ margin: "0 0 5px 0" }}>{clientName}</p>
             <p style={{ margin: "0 0 5px 0" }}>{clientAddress}</p>
-            <p style={{ margin: "0 0 5px 0" }}>{clientCity}</p>
             <p style={{ margin: "0 0 5px 0" }}>
-              {clientState} {clientCountry}
+              {clientPostalCode} {clientCity}
             </p>
-            <p style={{ margin: "0" }}>N.I.F. {clientNIF}</p>
+            <p style={{ margin: "0 0 5px 0" }}>
+              {clientState}, {clientCountry}
+            </p>
+            {clientNIF && <p style={{ margin: "0" }}>N.I.F. {clientNIF}</p>}
           </div>
         </div>
 
@@ -185,15 +188,15 @@ const InvoiceGenerator = ({
             <b>Albarán:</b> {albaran}. <b>De:</b> {dateAlbaran}
           </p>
           <p style={{ margin: "0" }}>
-            <b>Su Pedido Nº:</b> {orderNumber}
+            <b>Pedido:</b> {orderNumber}
           </p>
         </div>
       </div>
       <div
         style={{
-          borderBottom: "1px solid #000",
+          border: "1px solid #000",
           height: "100vh",
-          marginBottom: "20px",
+          marginBottom: "10px",
         }}
       >
         <table
@@ -274,7 +277,7 @@ const InvoiceGenerator = ({
           style={{
             width: "100%",
             borderCollapse: "collapse",
-            marginBottom: "20px",
+            marginBottom: "10px",
           }}
         >
           <thead>
@@ -344,14 +347,16 @@ const InvoiceGenerator = ({
                   textAlign: "center",
                 }}
               >
-                {(
-                  parseFloat(
-                    (
-                      parseFloat(tax.toFixed(2)) /
-                      parseFloat(subtotal.toFixed(2))
+                {tax > 0
+                  ? (
+                      parseFloat(
+                        (
+                          parseFloat(tax.toFixed(2)) /
+                          parseFloat(subtotal.toFixed(2))
+                        ).toFixed(2)
+                      ) * 100
                     ).toFixed(2)
-                  ) * 100
-                ).toFixed(2) + ".00"}
+                  : "0.00"}
               </td>
               <td
                 style={{
@@ -369,7 +374,7 @@ const InvoiceGenerator = ({
                   textAlign: "center",
                 }}
               >
-                0,00
+                0.00
               </td>
               <td
                 style={{
@@ -378,11 +383,12 @@ const InvoiceGenerator = ({
                   textAlign: "center",
                 }}
               >
-                0,00
+                0.00
               </td>
             </tr>
             <tr>
               <td
+                colSpan={4}
                 style={{
                   border: "1px solid #000",
                   padding: "15px",
@@ -423,7 +429,7 @@ const InvoiceGenerator = ({
             VENCIMIENTOS
           </small>
           <small style={{ margin: "0" }}>
-            {date} {total.toFixed(2)}
+            {date} - {total.toFixed(2)}
           </small>
         </div>
 
