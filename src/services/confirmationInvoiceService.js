@@ -151,15 +151,21 @@ async function generateTemplate(order, customer, address) {
       Number(order_normalize.total_paid_tax_incl).toFixed(2)
     );
   if (address.address2 && address.address2 !== "") {
-    htmlContent = htmlContent.replace(
-      "{{address}}",
-      `${address.address1}, ${address.address2},<br>${address.postcode} ${address.city}`
-    );
+    htmlContent = htmlContent
+      .replace(
+        "{{address}}",
+        `${address.address1}, ${address.address2},<br>${address.postcode} ${address.city}`
+      )
+      .replace("{{customer}}", address.customer)
+      .replace("{{number_invoice}}", address.num_invoice);
   } else {
-    htmlContent = htmlContent.replace(
-      "{{address}}",
-      `${address.address1},<br>${address.postcode} ${address.city}`
-    );
+    htmlContent = htmlContent
+      .replace(
+        "{{address}}",
+        `${address.address},<br>${address.postcode} ${address.city}`
+      )
+      .replace("{{customer}}", address.customer)
+      .replace("{{number_invoice}}", address.num_invoice);
   }
   return htmlContent;
 }
