@@ -4,7 +4,7 @@ const puppeteer = require("puppeteer-core");
 const InvoiceGenerator = require("../components/InvoiceGenerator");
 
 async function generatePDF(data) {
-  const browser = null;
+  let browser = null;
 
   const formatDate = (dateStr) => {
     const date = new Date(dateStr);
