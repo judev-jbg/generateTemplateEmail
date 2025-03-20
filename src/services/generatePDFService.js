@@ -17,6 +17,11 @@ async function generatePDF(data) {
   };
 
   const capitalizeText = (text) => {
+    if (text === null || text === undefined) {
+      return "";
+    }
+
+    text = String(text);
     const palabras = text.split(" ");
 
     const palabrasCapitalizadas = palabras.map((palabra) => {
@@ -31,16 +36,22 @@ async function generatePDF(data) {
     return palabrasCapitalizadas.join(" ");
   };
 
+  const isNull = (value) => {
+    if (value === null || value === undefined) {
+      return true;
+    }
+  };
+
   const element = React.createElement(InvoiceGenerator, {
     invoiceNumber: `${data.num_factura} - ${data.año_factura}`,
     date: formatDate(data.fecha_factura),
     clientNumber: data.id_cliente,
-    clientName: data.cliente.toUpperCase(),
+    clientName: isNull(data.cliente) ? "" : data.cliente.toUpperCase(),
     clientAddress: capitalizeText(data.direccion),
-    clientCity: data.ciudad.toUpperCase(),
+    clientCity: isNull(data.ciudad) ? "" : data.ciudad.toUpperCase(),
     clientPostalCode: data.cod_postal,
-    clientState: data.provincia.toUpperCase(),
-    clientCountry: data.pais.toUpperCase(),
+    clientState: isNull(data.provincia) ? "" : data.provincia.toUpperCase(),
+    clientCountry: isNull(data.pais) ? "" : data.pais.toUpperCase(),
     clientNIF: data.nif,
     orderNumber: data.id_pedido_cliente,
     albaran: data.num_albaran,

@@ -113,14 +113,23 @@ const InvoiceGenerator = ({
             >
               DATOS DEL CLIENTE:
             </h2>
-            <p style={{ margin: "0 0 5px 0" }}>{clientName}</p>
-            <p style={{ margin: "0 0 5px 0" }}>{clientAddress}</p>
-            <p style={{ margin: "0 0 5px 0" }}>
-              {clientPostalCode} {clientCity}
-            </p>
-            <p style={{ margin: "0 0 5px 0" }}>
-              {clientState}, {clientCountry}
-            </p>
+            {clientName && <p style={{ margin: "0 0 5px 0" }}>{clientName}</p>}
+            {clientAddress && (
+              <p style={{ margin: "0 0 5px 0" }}>{clientAddress}</p>
+            )}
+            {(clientPostalCode || clientCity) && (
+              <p style={{ margin: "0 0 5px 0" }}>
+                {clientPostalCode && `${clientPostalCode} `}
+                {clientCity && clientCity}
+              </p>
+            )}
+            {(clientState || clientCountry) && (
+              <p style={{ margin: "0 0 5px 0" }}>
+                {clientState && `${clientState}`}
+                {clientState && clientCountry && ", "}
+                {clientCountry && clientCountry}
+              </p>
+            )}
             {clientNIF && <p style={{ margin: "0" }}>N.I.F. {clientNIF}</p>}
           </div>
         </div>
