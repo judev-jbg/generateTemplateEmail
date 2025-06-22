@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "functions": {
+    "api/generatePDF.js": {
+      "maxDuration": 25,
+      "memory": 1024
+    },
+    "api/*.js": {
+      "maxDuration": 10,
+      "memory": 512
+    }
+  },
+  "build": {
+    "env": {
+      "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"
+    }
+  }
+}
