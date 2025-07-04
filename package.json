@@ -4,7 +4,8 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "playwright-aws-lambda": "^0.10.0",
+    "@sparticuz/chromium": "^137.0.1",
+    "playwright-core": "^1.53.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

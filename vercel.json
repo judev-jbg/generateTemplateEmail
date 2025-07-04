@@ -2,11 +2,11 @@
   "version": 2,
   "functions": {
     "api/generatePDF.js": {
-      "maxDuration": 25,
+      "maxDuration": 30,
       "memory": 1024
     },
     "api/*.js": {
-      "maxDuration": 10,
+      "maxDuration": 15,
       "memory": 512
     }
   },
