@@ -19,5 +19,8 @@
   "scripts": {
     "build": "echo 'Build complete'",
     "start": "vercel dev"
+  },
+  "overrides": {
+    "path-to-regexp": "^6.3.0"
   }
 }
